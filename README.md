@@ -11,6 +11,6 @@ List of Firmwares:
 ==================
 *Grains-ByteBeat-Xfade.zip*                                                                 
 Two different ByteBeats can be selected and crossfaded. Editing of ByteBeats is possible in the .ino-File.   
-For more details concerning usage please refer to Header-Section of *Grains-ByteBeat-Xfade.ino*
+For more details concerning usage please refer to the Header-Section of *Grains-ByteBeat-Xfade.ino*
 
 ...
