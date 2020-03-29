@@ -7,7 +7,7 @@ Regarding how to upload new firmware to your AE Modular GRAINS please refer to: 
 List of Firmwares:
 ==================
 *Grains-ByteBeat-Xfade.zip*                                                                 
-Two different ByteBeats can be selected and crossfaded. Editing of ByteBeats is possible in the .ino-File   
-For more details concerning usage please see Header-Section of *Grains-ByteBeat-Xfade.ino*
+Two different ByteBeats can be selected and crossfaded. Editing of ByteBeats is possible in the .ino-File.   
+For more details concerning usage please refer to Header-Section of *Grains-ByteBeat-Xfade.ino*
 
 ...
