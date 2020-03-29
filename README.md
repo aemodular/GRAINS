@@ -2,8 +2,8 @@
 Firmware for the GRAINS module from tangible waves
 
 To use any of firmwares please download the equivalent ZIP-file to your local drive and unzip it to an appropriate folder.  
-To download one of the Firmwares please click on its ZIP-file and click the download-button on the next page.   
-To download all firmwares at once please click *clone or download* at *https://github.com/aemodular/GRAINS* and then press the download button.
+To download one of the Firmwares please click on its ZIP-file and click the 'download'-button on the next page.   
+To download all firmwares at once please click the 'clone or download'-button at *https://github.com/aemodular/GRAINS* and then select the 'download'-option.
 Regarding how to upload new firmware to your AE Modular GRAINS please refer to:    
 *http://wiki.aemodular.com/pmwiki.php/AeManual/GRAINS*
 
