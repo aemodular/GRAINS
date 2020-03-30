@@ -5,6 +5,8 @@ __IMPORTANT__
 
 This is a community project and __NOT__ official firmware from tangible waves! tangible waves makes no promise that the firmwares will work on the hardware that tangible waves produces and sells. Further tangible waves accepts no responsibility for any damage caused to the any product where these firmwares will be installed!
 
+__How to__
+
 To use any of the firmwares, to download all firmwares at once please click the 'clone or download'-button at https://github.com/aemodular/GRAINS and then select the 'download'-option.  
 
 Regarding how to upload new firmware to your AE Modular GRAINS please refer to:    
@@ -14,10 +16,10 @@ You can find more information about the AE Modular community at http://forum.aem
 
 The GRAINS module can be ordered directly from the tangible waves website at https://tangiblewaves.com/aemodular/GRAINS
 
-List of Firmwares:
+List of Firmwares
 ==================
-*ByteBeat-Xfade*                                                                 
+__ByteBeat-Xfade__                                                              
 Two different ByteBeats can be selected and crossfaded. Editing of ByteBeats is possible in the .ino-File.   
 For more details concerning usage please refer to the Header-Section of *ByteBeat-Xfade.ino*
 
-...
+
