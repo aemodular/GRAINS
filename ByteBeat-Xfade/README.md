@@ -1,4 +1,4 @@
-#GRAINS ByteBeats Crossfader
+# GRAINS ByteBeats Crossfader
 
 an experimental Firmware for the AE Modular GRAINS module by tangible waves (using a samplerate-driven framework).
 
@@ -6,44 +6,48 @@ If you want to get serious about using ByteBeats you should consider AE Modular 
 https://www.tangiblewaves.com
 
 Thanks for explanations and examples regarding:
+
 Example-Code for Arduino-realtime-audio-processing from KHM, cologne Germany 
 https://www.khm.de/homeinterface.khm.de/index.php/lab/interfaces-advanced/arduino-realtime-audio-processing/index.html
 
 Backgroundinfos concerning Arduino Muxer, Registervalues etc: 
+
 http://www.robotplatform.com/knowledge/ADC/adc_tutorial_2.html
+
 http://www.robotplatform.com/knowledge/ADC/adc_tutorial_3.html
 
 Very helpful and inspiring information regarding ByteBeats by The Tuesday Night Machines:
+
 http://nightmachines.tv/the-absolute-beginners-guide-to-coding-bytebeats.html
 
-#Usage of this Firmware with GRAINS:
+# Usage of this Firmware with GRAINS:
 
-IN1 / Pot1: Select ByteBeat A
-IN2 / Pot2: Select ByteBeat B
-IN3:        (unused so far)
-Pot3:       Crossfade between ByteBeat A and B
-A:          (unused so far)
+__Inputs__
 
-OUT:        Audio out of mixture of ByteBeat A and B
-D:          (unused so far)
+* IN1 / Pot1: Select ByteBeat A
+* IN2 / Pot2: Select ByteBeat B
+* IN3:        (unused so far)
+* Pot3:       Crossfade between ByteBeat A and B
+* A:          (unused so far)
 
-Notes:
-------
-a) You can add or modify your own ByteBeats at GrainsIO::process() 
-   after where it says: "static byte (*beats[])(long t)  // List of Bytebeats..."
+__Outputs__
+
+* OUT:        Audio out of mixture of ByteBeat A and B
+* D:          (unused so far)
+
+## Notes
+
+1. You can add or modify your own ByteBeats at GrainsIO::process() after where it says: "static byte (*beats[])(long t)  // List of Bytebeats..."
   
-b) Depending on the complexity of a ByteBeat, playback-speed may vary
-   This even can be the case for one ByteBeat (let's say ByteBeat B), when you change the selection of other ByteBeat (let's say ByteBeat A)  
-   Even though this feature may be considered an undesired it can be used creatively, but you'll have to find out yourself ;-)  
+2. Depending on the complexity of a ByteBeat, playback-speed may vary This even can be the case for one ByteBeat (let's say ByteBeat B), when you change the selection of other ByteBeat (let's say ByteBeat A) Even though this feature may be considered an undesired it can be used creatively, but you'll have to find out yourself ;-)  
 
-c) Long ByteBeats may not work as expeced, because they also might slow down playback speed.
+3. Long ByteBeats may not work as expeced, because they also might slow down playback speed.
 
-Caution! Use at your own risk (according to GNU General Public License '16. Limitation of Liability')
+__Caution!__ Use at your own risk (according to GNU General Public License '16. Limitation of Liability')
 
 -------------------------------------------------------------  
 
-This program in combination with the hardware it is applied to can produce harsh and loud frequencies that may be of harm to speakers or your ears!
-Permanent hearing loss may result from exposure to sound at high volumes. Use as low a volume as possible.
+This program in combination with the hardware it is applied to can produce harsh and loud frequencies that may be of harm to speakers or your ears! Permanent hearing loss may result from exposure to sound at high volumes. Use as low a volume as possible.
 
 'GRAINS ByteBeats Crossfader' an experimental Firmware for the AE Modular GRAINS module by tangible waves
 
