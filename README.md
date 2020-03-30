@@ -3,7 +3,7 @@ Firmware for the GRAINS module from tangible waves made by the members of the AE
 
 __IMPORTANT__ 
 
-This is a community project and __NOT__ official firmware from tangible waves! tangible waves makes no promise that the firmwares will work on the hardware that tangible waves produces and sells. Further tangible waves accepts no responisibility for any damage caused to the any product where these firmwares will be installed!
+This is a community project and __NOT__ official firmware from tangible waves! tangible waves makes no promise that the firmwares will work on the hardware that tangible waves produces and sells. Further tangible waves accepts no responsibility for any damage caused to the any product where these firmwares will be installed!
 
 To use any of the firmwares, to download all firmwares at once please click the 'clone or download'-button at https://github.com/aemodular/GRAINS and then select the 'download'-option.  
 
