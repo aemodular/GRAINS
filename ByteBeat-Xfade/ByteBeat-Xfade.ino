@@ -3,6 +3,8 @@
   an experimental Firmware for the AE Modular GRAINS module by tangible waves (using a samplerate-driven framework).
   If you want to get serious about using ByteBeats you should consider AE Modular ALGODRONE instead, this is just experemental to show the ByteBeats concept
   https://www.tangiblewaves.com
+
+  To set up the environment needed to install this firmware, please refer to the AeManual for GRAINS on the AE Modular Wiki: http://wiki.aemodular.com/pmwiki.php/AeManual/GRAINS
   
   Thanks for explanations and examples regarding:
   Example-Code for Arduino-realtime-audio-processing from KHM, cologne Germany 
@@ -15,6 +17,8 @@
 
   Very helpful and inspiring information regarding ByteBeats by The Tuesday Night Machines:
   http://nightmachines.tv/the-absolute-beginners-guide-to-coding-bytebeats.html
+
+  Demotrack available here: https://soundcloud.com/taitekatto/grains_bytebeat_xfade
   
   Usage of this Firmware with GRAINS:
   ===================================
