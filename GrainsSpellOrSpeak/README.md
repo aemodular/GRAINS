@@ -40,7 +40,7 @@ This program in combination with the hardware it is applied to can produce harsh
 
 'Spell or Speak' an alternative Firmware for the AE Modular GRAINS module by tangible waves inspired by a famous toy from the 70th
 
-Copyright (C) 2020  Mathias BrÃ¼ssel
+Copyright (C) 2020  Mathias Brüssel
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation.
