@@ -22,4 +22,8 @@ __ByteBeat-Xfade__
 Two different ByteBeats can be selected and crossfaded. Editing of ByteBeats is possible in the .ino-File.   
 For more details concerning usage please refer to the Header-Section of *ByteBeat-Xfade.ino*
 
+__Spell or Speak__                                                              
+Synthetic words, as used with a famous toy from the late 70th, can be triggered via Gate-impulses and selcted via CV or a pot  
+For more details concerning usage please refer to the Header-Section of *GrainsSpellOrSpeak.ino*
+
 
