@@ -13,7 +13,9 @@ Demotrack available here: https://soundcloud.com/taitekatto/grains-spell-or-spea
 This program relies on the Talkie Library by Peter Knight as modified by Jean-Luc Deladrière with "Talko Counter for Grains", which is also included in the folder of this firmware. The orinal "TALKO COUNTER" also including talkie.cpp and talkie.h of this version of the Talkie Library can be found here: https://www.ginkosynthese.com/grains-codes
 The phonems used with this firmware as provided via "Vocab_US_TI99.c" and others can be found with the talkie-library for Arduino here: https://www.arduinolibraries.info/libraries/talkie 
   
-Note: if you want to adjust the way Pitch and Speed of the talking-voice can be modified please have a look at "talkie.cpp" in the current folder and look for the values mapped via "analogRead(0)" and "analogRead(1)".
+## Note
+
+If you want to adjust the way Pitch and Speed of the talking-voice can be modified please have a look at "talkie.cpp" in the current folder and look for the values mapped via "analogRead(0)" and "analogRead(1)".
 
 # Usage of this Firmware with GRAINS:
 
