@@ -7,7 +7,7 @@ To hear this, for instance sent digital out to 2VCA and any Oscillator to the sa
 
 To change the initial Morse-Message please search for "###" and adjust the string to your liking!
 
-To enter new morsecodes connect a MIDI-Keyboard and Connect Bus-Gate with IN1, Bus-CV with IN3.
+To enter new morsecodes (in realtime!) connect a MIDI-Keyboard and Connect Bus-Gate with IN1, Bus-CV with IN3.
 
 As an intial setup: "Shortcut" audio-out with audio-in, Set P1 to IN1 and max position. Set P2 to MAN and max position. Set P3 to min postion.
 The Morsecode itself can be modified and/or overwritten as explained further below.
@@ -52,7 +52,7 @@ https://en.wikipedia.org/wiki/Morse_code
 As initial Content the String "AEM" for AE Modular will be played back as morse code
 Similar to putting in real morse code, there will be no error-checking, so if you want you can invent your own, new morse-characters ;-)
   
-## Use keys of lowest 2 octaves to change content to be sent out as Morsecode to Digital-Out as Gate-CV:
+Use keys of lowest 2 octaves to change content to be sent out as Morsecode to Digital-Out as Gate-CV:
 
 C# (or C) enter a new DIT (short morse character) - second-highest octave
 F# (or G) enter a new DAH (long morse character) - second-highest octave
