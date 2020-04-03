@@ -16,9 +16,11 @@
   
   Thanks for explanations and examples regarding:
   Example-Code for Arduino-realtime-audio-processing from KHM, cologne Germany https://www.khm.de/home
-  interface.khm.de/index.php/lab/interfaces-advanced/arduino-realtime-audio-processing/index.html
+  http://interface.khm.de/index.php/lab/interfaces-advanced/arduino-realtime-audio-processing/index.html
   Backgroundinfos concerning Arduino Muxer, Registervalues etc: 
   http://www.robotplatform.com/knowledge/ADC/adc_tutorial_2.html http://www.robotplatform.com/knowledge/ADC/adc_tutorial_3.html
+
+  Demotrack available here: https://soundcloud.com/taitekatto/grains-morse
 
   Usage of this Firmware with GRAINS:
   ===================================
