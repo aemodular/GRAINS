@@ -55,8 +55,11 @@ Similar to putting in real morse code, there will be no error-checking, so if yo
 Use keys of lowest 2 octaves to change content to be sent out as Morsecode to Digital-Out as Gate-CV:
 
 C# (or C) enter a new DIT (short morse character) - second-highest octave
+
 F# (or G) enter a new DAH (long morse character) - second-highest octave
+
 c# (or c) enter a PAUSE - (should not be more than one at a time) highest octave
+
 f# (or g) delete last morse-character (DIT, DAH or PAUSE) - highest octave
 
 Please note: in contrast to a Computer-Keyboard we have _no_ autorepeat for entering of keys, Morsedigits or pauses that is!
