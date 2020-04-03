@@ -23,7 +23,7 @@ http://interface.khm.de/index.php/lab/interfaces-advanced/arduino-realtime-audio
 Backgroundinfos concerning Arduino Muxer, Registervalues etc: 
 http://www.robotplatform.com/knowledge/ADC/adc_tutorial_2.html http://www.robotplatform.com/knowledge/ADC/adc_tutorial_3.html
 
-__A demotrack__ for Grains-Morse is available here: https://soundcloud.com/taitekatto/grains-morse
+* ___Demotrack__ for Grains 'Morse' is available here: https://soundcloud.com/taitekatto/grains-morse
 
 # Usage of this Firmware with GRAINS:
 
