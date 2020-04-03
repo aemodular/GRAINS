@@ -17,7 +17,9 @@ Even usage as a Clock-Signal may be considered for creative use!
   
 Thanks for explanations and examples regarding:
 Example-Code for Arduino-realtime-audio-processing from KHM, cologne Germany https://www.khm.de/home
+
 http://interface.khm.de/index.php/lab/interfaces-advanced/arduino-realtime-audio-processing/index.html
+
 Backgroundinfos concerning Arduino Muxer, Registervalues etc: 
 http://www.robotplatform.com/knowledge/ADC/adc_tutorial_2.html http://www.robotplatform.com/knowledge/ADC/adc_tutorial_3.html
 
