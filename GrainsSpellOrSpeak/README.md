@@ -8,7 +8,7 @@ The synthetic words, as used with a famous toy from the late 70th, can be trigge
   
 To set up the environment needed to install this firmware, please refer to the AeManual for GRAINS on the AE Modular Wiki: http://wiki.aemodular.com/pmwiki.php/AeManual/GRAINS
 
-* __Demotrack__ available here: https://soundcloud.com/taitekatto/grains-spell-or-speak
+* __Demotrack__ for Grains 'Spell or Speak' is available here: https://soundcloud.com/taitekatto/grains-spell-or-speak
   
 This program relies on the Talkie Library by Peter Knight as modified by Jean-Luc Deladrière with "Talko Counter for Grains", which is also included in the folder of this firmware. The orinal "TALKO COUNTER" also including talkie.cpp and talkie.h of this version of the Talkie Library can be found here: https://www.ginkosynthese.com/grains-codes
 The phonems used with this firmware as provided via "Vocab_US_TI99.c" and others can be found with the talkie-library for Arduino here: https://www.arduinolibraries.info/libraries/talkie 
