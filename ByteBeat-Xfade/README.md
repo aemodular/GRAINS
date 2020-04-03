@@ -22,7 +22,8 @@ Very helpful and inspiring information regarding ByteBeats by The Tuesday Night 
 
 http://nightmachines.tv/the-absolute-beginners-guide-to-coding-bytebeats.html
 
-Demotrack available here: https://soundcloud.com/taitekatto/grains_bytebeat_xfade
+
+* __Demotrack__ for Grains 'ByteBeat-Xfade' is available here: https://soundcloud.com/taitekatto/grains_bytebeat_xfade
 
 # Usage of this Firmware with GRAINS:
 

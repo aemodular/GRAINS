@@ -1,51 +1,71 @@
-# GRAINS ByteBeats Crossfader
+# GRAINS Morse-code
 
-an experimental Firmware for the AE Modular GRAINS module by tangible waves (using a samplerate-driven framework).
+Morsecode playback can be started and then will be played back in a loop or play once.
 
-If you want to get serious about using ByteBeats you should consider AE Modular ALGODRONE instead, this is just experimental to show the ByteBeats concept
-https://www.tangiblewaves.com
+On startup the Morsecode for "AEM" (AE Modular) will be sent out as Gate-events via GRAINS' digital output. 
+To hear this, for instance sent digital out to 2VCA and any Oscillator to the same VCA as audio-material.
 
-To set up the environment needed to install this firmware, please refer to the AeManual for GRAINS on the AE Modular Wiki: http://wiki.aemodular.com/pmwiki.php/AeManual/GRAINS
+To change the initial Morse-Message please search for "###" and adjust the string to your liking!
 
+To enter new morsecodes (in realtime!) connect a MIDI-Keyboard and Connect Bus-Gate with IN1, Bus-CV with IN3.
+
+As an intial setup: "Shortcut" audio-out with audio-in, Set P1 to IN1 and max position. Set P2 to MAN and max position. Set P3 to min postion.
+The Morsecode itself can be modified and/or overwritten as explained further below.
+  
+Of course the Gate-events can be used for any other usecase, like triggering 2ENV, KICK, DRUMKIT or whatever.
+Even usage as a Clock-Signal may be considered for creative use!
+  
 Thanks for explanations and examples regarding:
+Example-Code for Arduino-realtime-audio-processing from KHM, cologne Germany https://www.khm.de/home
 
-Example-Code for Arduino-realtime-audio-processing from KHM, cologne Germany 
-https://www.khm.de/homeinterface.khm.de/index.php/lab/interfaces-advanced/arduino-realtime-audio-processing/index.html
+http://interface.khm.de/index.php/lab/interfaces-advanced/arduino-realtime-audio-processing/index.html
 
 Backgroundinfos concerning Arduino Muxer, Registervalues etc: 
+http://www.robotplatform.com/knowledge/ADC/adc_tutorial_2.html http://www.robotplatform.com/knowledge/ADC/adc_tutorial_3.html
 
-http://www.robotplatform.com/knowledge/ADC/adc_tutorial_2.html
-
-http://www.robotplatform.com/knowledge/ADC/adc_tutorial_3.html
-
-Very helpful and inspiring information regarding ByteBeats by The Tuesday Night Machines:
-
-http://nightmachines.tv/the-absolute-beginners-guide-to-coding-bytebeats.html
-
-Demotrack available here: https://soundcloud.com/taitekatto/grains_bytebeat_xfade
+* __Demotrack__ for Grains 'Morse' is available here: https://soundcloud.com/taitekatto/grains-morse
 
 # Usage of this Firmware with GRAINS:
 
 __Inputs__
 
-* IN1 / Pot1: Select ByteBeat A
-* IN2 / Pot2: Select ByteBeat B
-* IN3:        (unused so far)
-* Pot3:       Crossfade between ByteBeat A and B
-* A:          (unused so far)
+* IN1 / Pot1: Gate to trigger new letter (select IN1 and put P2 to max!)
+* IN2 / Pot2: Stop Morsecode if all left, Play once in middle-position, loop Morsecode when turned to max (select MAN for P2!)
+* IN3:        Select letter (Note CV)     // Two upper octaves C#: '.', F#: '-', c#: word pause, g#: delete last character
+* A:          Clock input (Yes, we use the audio-inut for clock-in, here!)
+* Pot3:       Beat Devider (changes speed, max speed [== default] when all left).
 
 __Outputs__
 
-* OUT:        Audio out of mixture of ByteBeat A and B
-* D:          (unused so far)
+* OUT:        Puts out a steady-rate clock-signal, use this to "shortcut" with audio-in, if you don't want to use an LFO or Bus-Clock as your clock!
+* D:          Gate to trigger Morsecode on Output (connect to 2VCA for instance)
+
+
+## IMPORTANT:  
+
+Please select IN1 as input and IN2 as manual, Then set Pot1 and Pot2 to their maximum value!
+Otherwise Gate-Tracking and playback of Morse-Code may not work as intended! You may change Pot2 to restart or pause the Morse-Code lateron!
+   
 
 ## Notes
 
-1. You can add or modify your own ByteBeats at GrainsIO::process() after where it says: "static byte (*beats[])(long t)  // List of Bytebeats..."
+To learn about Morsecode and see the table of Morse-characters you could put in, please refer to: 
+https://en.wikipedia.org/wiki/Morse_code
+As initial Content the String "AEM" for AE Modular will be played back as morse code
+Similar to putting in real morse code, there will be no error-checking, so if you want you can invent your own, new morse-characters ;-)
   
-2. Depending on the complexity of a ByteBeat, playback-speed may vary This even can be the case for one ByteBeat (let's say ByteBeat B), when you change the selection of other ByteBeat (let's say ByteBeat A) Even though this feature may be considered an undesired it can be used creatively, but you'll have to find out yourself ;-)  
+Use keys of lowest 2 octaves to change content to be sent out as Morsecode to Digital-Out as Gate-CV:
 
-3. Long ByteBeats may not work as expeced, because they also might slow down playback speed.
+C# (or C) enter a new DIT (short morse character) - second-highest octave
+
+F# (or G) enter a new DAH (long morse character) - second-highest octave
+
+c# (or c) enter a PAUSE - (should not be more than one at a time) highest octave
+
+f# (or g) delete last morse-character (DIT, DAH or PAUSE) - highest octave
+
+Please note: in contrast to a Computer-Keyboard we have _no_ autorepeat for entering of keys, Morsedigits or pauses that is!
+-> To better understand what is happening here, we recommend you to enable the Serial Monitor from the Arduino IDE (CTRL/CMD+SHIFT+M)
 
 __Caution!__ Use at your own risk (according to GNU General Public License '16. Limitation of Liability')
 
@@ -53,7 +73,7 @@ __Caution!__ Use at your own risk (according to GNU General Public License '16. 
 
 This program in combination with the hardware it is applied to can produce harsh and loud frequencies that may be of harm to speakers or your ears! Permanent hearing loss may result from exposure to sound at high volumes. Use as low a volume as possible.
 
-'GRAINS ByteBeats Crossfader' an experimental Firmware for the AE Modular GRAINS module by tangible waves
+'GRAINS Morse Code' an experimental Firmware for the AE Modular GRAINS module by tangible waves to enter and playback Morsecode as Gate events
 
 Copyright (C) 2020  Mathias Brüssel
 
