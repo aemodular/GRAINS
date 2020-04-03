@@ -12,7 +12,7 @@ To enter new morsecodes (in realtime!) connect a MIDI-Keyboard and Connect Bus-G
 As an intial setup: "Shortcut" audio-out with audio-in, Set P1 to IN1 and max position. Set P2 to MAN and max position. Set P3 to min postion.
 The Morsecode itself can be modified and/or overwritten as explained further below.
   
-Of course the Gate-events can be used for any other usecase, like triggering 2ENV, KICK, DRUMKIT or whatever
+Of course the Gate-events can be used for any other usecase, like triggering 2ENV, KICK, DRUMKIT or whatever.
 Even usage as a Clock-Signal may be considered for creative use!
   
 Thanks for explanations and examples regarding:
