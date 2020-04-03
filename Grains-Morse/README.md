@@ -71,7 +71,7 @@ __Caution!__ Use at your own risk (according to GNU General Public License '16. 
 
 This program in combination with the hardware it is applied to can produce harsh and loud frequencies that may be of harm to speakers or your ears! Permanent hearing loss may result from exposure to sound at high volumes. Use as low a volume as possible.
 
-'GRAINS ByteBeats Crossfader' an experimental Firmware for the AE Modular GRAINS module by tangible waves
+'GRAINS Morse Code' an experimental Firmware for the AE Modular GRAINS module by tangible waves to enter and playback Morsecode as Gate events
 
 Copyright (C) 2020  Mathias Brüssel
 
