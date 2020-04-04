@@ -70,7 +70,10 @@
 #include <avr/interrupt.h>
 #include <avr/pgmspace.h>
 
+// #define HAIRLESS_MIDI 1            // Currently unused, delete comment-marks if MIDI-out is needed
+#ifdef HAIRLESS_MIDI
 #include <MIDI.h>
+#endif
 
 #define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))       // Clearbit for Atmega8/"Arduino" registers
 #define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))        // Setbit for Atmega8/"Arduino" registers
@@ -120,7 +123,6 @@ static GrainsIO* gp = &gio;    // All access to the class-variables above for co
 #define analog_out  gp->a_out
 #define digital_out gp->d_out         // Set to HIGH or LOW respectively!
 
-// #define HAIRLESS_MIDI 1            // Currently unused, delete comment-marks if MIDI-out is needed
 #ifdef HAIRLESS_MIDI                  // Details concerning integrating MIDI via USB with the processor used in GRAINS see: 
 MIDI_CREATE_DEFAULT_INSTANCE();       // https://projectgus.github.io/hairless-midiserial
 #endif
