@@ -24,7 +24,7 @@
 
   Usage of this Firmware with GRAINS:
   ===================================
-  IN1 / Pot1: Gate to trigger new letter (select IN1 and put P2 to max!)
+  IN1 / Pot1: Gate to trigger new letter (select IN1 and put P1 to max!)
   IN2 / Pot2: Stop Morsecode if all left, Play once in middle-position, loop Morsecode when turned to max (select MAN for P2!)
   IN3:        Select letter (Note CV)     // Two upper octaves C#: '.', F#: '-', c#: word pause, g#: delete last character
   A:          Clock input (Yes, we use the audio-inut for clock-in, here!)
