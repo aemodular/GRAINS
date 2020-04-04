@@ -18,6 +18,9 @@
   Very helpful and inspiring information regarding ByteBeats by The Tuesday Night Machines:
   http://nightmachines.tv/the-absolute-beginners-guide-to-coding-bytebeats.html
 
+  Several ByteBeats as used below are from this guide, so big thanks to The Tuesday Night Machines, other ByteBeats were found or generated here:
+  http://entropedia.co.uk/generative_music/
+
   Demotrack available here: https://soundcloud.com/taitekatto/grains_bytebeat_xfade
   
   Usage of this Firmware with GRAINS:
