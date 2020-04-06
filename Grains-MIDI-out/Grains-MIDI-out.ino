@@ -74,7 +74,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <avr/interrupt.h>
 #include <avr/pgmspace.h>
 
-// ### #include <MIDI.h>
 
 #define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))       // Clearbit for Atmega8/"Arduino" registers
 #define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))        // Setbit for Atmega8/"Arduino" registers
@@ -124,10 +123,6 @@ static GrainsIO* gp = &gio;    // All access to the class-variables above for co
 #define analog_out  gp->a_out
 #define digital_out gp->d_out         // Set to HIGH or LOW respectively!
 
-// ### #define HAIRLESS_MIDI 1               // Comment out if MIDI is not needed
-// ### #ifdef HAIRLESS_MIDI
-// ### MIDI_CREATE_DEFAULT_INSTANCE();
-// ### #endif
 
 // *** Change any code only here (if possible) to use AE Modular framework for your own GRAINS firmwares ***
 
@@ -212,10 +207,6 @@ byte pol_idx = 0;
 // Sets up pins and configures the samplerate and frequency of the PWM output
 void setup()
 {
-// ### #ifdef HAIRLESS_MIDI
-// ### MIDI.begin();
-// ### #endif
-  
   Serial.begin(115200);
   pinMode(DIGITAL_OUT_PIN,OUTPUT);
 
