@@ -44,6 +44,8 @@ https://projectgus.github.io/hairless-midiserial
 * Any Controller-Data sent to GRAINS (via Hairless MIDI or similar) will generate CV via analog out 
 * In terms of performance please avoid unnecessary MIDI-data, for instance clock-signals should be avoided to be sent via Hairless Midi, here
 
+* The so called Midi "running status" is recognized on input, but not used on output, so this firmware should be compatible with any MIDI-hardware or software.
+
 To avoid the complexity of additional libraries, we use our own midi_sendControlChange() method here instead of the standard MIDI.sendControlChange().
 If you want to extend MIDI-capabilities you may want to change this by installing the Arduino MIDI-Library and change this accordingly!
 https://playground.arduino.cc/Main/MIDILibrary/
