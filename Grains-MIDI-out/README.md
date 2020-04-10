@@ -1,6 +1,6 @@
 # GRAINS "Midi out"
 an alternative Firmware for the AE Modular GRAINS module by tangible waves (using a samplerate-driven framework) 
-providing the option to send out MIDI control values via USB
+providing the option to send out MIDI control values via USB, plus as a little extra convert any key on/off to Gate and any CC to CV
 
 To set up the environment needed to install this firmware, please refer to the AeManual for GRAINS on the AE Modular Wiki: http://wiki.aemodular.com/pmwiki.php/AeManual/GRAINS
 
@@ -26,19 +26,23 @@ __Inputs__
 
 __Outputs__
 
-* OUT:        (unused so far)
-* D:          (unused so far)
+* OUT:        CV value - will reflect the intensity of any controller data sent to GRAINS' MIDI in via USB (Hairless MIDI see below)
+* D:          Gate on/off - will be on for any key pressed, will be off for any key released sent to GRAINS' MIDI in via USB (Hairless MIDI see below)
 
 ## Notes
 
 The Atmega processor used in GRAINS is not capable to send out MIDI via USB directly, but luckily serial data can be converted to MIDI easily
 A popular way to do this is "Hairless MIDI<->Serial Bridge", download and documentary for MacOS/Windows/Linux available here:
-https://projectgus.github.io/hairless-midiserial/
+https://projectgus.github.io/hairless-midiserial
 
 * If you want to use this MIDI data as input for your DAW on your PC you will need a MIDI-loopback device in software or route MIDI-out to MIDI-in with your hardware
 * Please make sure to close Hairless MIDI when you want to upload this Firmware to GRAINS (uses the same USB-Serial-Port)
 * You can use up to 5 pots to send out MIDI CC for instance by setting 2ATT/CV to 5V and sending the votages to IN3 and A (analogue input)
 * Attaching controls in your DAW can be a bit tricky: set all knobs to 0 and only dial in one pot to max and back to zero at a time
+
+* As an extra also MIDI-in will be processed: any key pressed will trigger a Gate via digital out
+* Any Controller-Data sent to GRAINS (via Hairless MIDI or similar) will generate CV via analog out 
+* In terms of performance please avoid unnecessary MIDI-data, for instance clock-signals should be avoided to be sent via Hairless Midi, here
 
 To avoid the complexity of additional libraries, we use our own midi_sendControlChange() method here instead of the standard MIDI.sendControlChange().
 If you want to extend MIDI-capabilities you may want to change this by installing the Arduino MIDI-Library and change this accordingly!

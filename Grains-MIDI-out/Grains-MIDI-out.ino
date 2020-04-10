@@ -1,7 +1,7 @@
 /*
 # GRAINS "Midi out"
 an alternative Firmware for the AE Modular GRAINS module by tangible waves (using a samplerate-driven framework) 
-providing the option to send out MIDI control values via USB
+providing the option to send out MIDI control values via USB, plus as a little extra convert any key on/off to Gate and any CC to CV
 
 To set up the environment needed to install this firmware, please refer to the AeManual for GRAINS on the AE Modular Wiki: http://wiki.aemodular.com/pmwiki.php/AeManual/GRAINS
 
@@ -27,19 +27,23 @@ __Inputs__
 
 __Outputs__
 
-* OUT:        (unused so far)
-* D:          (unused so far)
+* OUT:        CV value - will reflect the intensity of any controller data sent to GRAINS' MIDI in via USB (Hairless MIDI see below)
+* D:          Gate on/off - will be on for any key pressed, will be off for any key released sent to GRAINS' MIDI in via USB (Hairless MIDI see below)
 
 ## Notes
 
 The Atmega processor used in GRAINS is not capable to send out MIDI via USB directly, but luckily serial data can be converted to MIDI easily
 A popular way to do this is "Hairless MIDI<->Serial Bridge", download and documentary for MacOS/Windows/Linux available here:
-https://projectgus.github.io/hairless-midiserial/
+https://projectgus.github.io/hairless-midiserial
 
 * If you want to use this MIDI data as input for your DAW on your PC you will need a MIDI-loopback device in software or route MIDI-out to MIDI-in with your hardware
 * Please make sure to close Hairless MIDI when you want to upload this Firmware to GRAINS (uses the same USB-Serial-Port)
 * You can use up to 5 pots to send out MIDI CC for instance by setting 2ATT/CV to 5V and sending the votages to IN3 and A (analogue input)
 * Attaching controls in your DAW can be a bit tricky: set all knobs to 0 and only dial in one pot to max and back to zero at a time
+
+* As an extra also MIDI-in will be processed: any key pressed will trigger a Gate via digital out
+* Any Controller-Data sent to GRAINS (via Hairless MIDI or similar) will generate CV via analog out 
+* In terms of performance please avoid unnecessary MIDI-data, for instance clock-signals should be avoided to be sent via Hairless Midi, here
 
 To avoid the complexity of additional libraries, we use our own midi_sendControlChange() method here instead of the standard MIDI.sendControlChange().
 If you want to extend MIDI-capabilities you may want to change this by installing the Arduino MIDI-Library and change this accordingly!
@@ -145,8 +149,8 @@ byte result = 0;
   for(i=0; i<30; i++)
     cc_val_sum = interpol[cv_num][i]+cc_val_sum;
 
-  result = (byte)(cc_val_sum/30);
-  if( result <= 9 )                 // Some pots send odd values at start
+  result = (byte)(cc_val_sum/30);   // Arithmetic mean of last 30 measurements
+  if( result <= 9 )                 // Some pots send odd values at beginning of range
     result = 0;
   return( result/2 );
 }
@@ -157,7 +161,7 @@ void GrainsIO::process() // Programming example: Send MIDI via serial over USB t
 static unsigned int counter = 0;
 static unsigned int pol_counter = 0;
 
-static byte last_in1_pot1 = 0;  // used to send MIDI.sendControlChange(controlNumber, controlValue, channel);
+static byte last_in1_pot1 = 0;      // used to send MIDI.sendControlChange(controlNumber, controlValue, channel);
 static byte last_in2_pot2 = 0;
 static byte last_in3 = 0;
 static byte last_pot3 = 0;
@@ -166,41 +170,90 @@ static byte last_audio = 0;
 byte new_val = 0;
 byte pol_idx = 0;
 
-   if((++counter%5) == 0)                       // Slow down midi send rate a bit - change to fit your needs!
-   {
-      pol_idx = ++pol_counter%30;
-      
-      new_val = interpolate(0, in1_pot1, pol_idx);
-      if( last_in1_pot1 != new_val )
+static char m_in = 0;                // MIDI in Byte
+static byte current_status = 0;      // Needed for "running status"...
+
+  counter++;
+
+  // --- Process MIDI in, to be sent to GRAINS ---
+  if((counter%3) == 0)                    // Slow down midi receive rate a bit in order not to intervere too much with CV tracking for MIDI out
+  { 
+    if(Serial.available())                // Look at "MIDI-buffer" coming in as normal serial data, normally via Hairless MIDI<->Serial Bridge
+    {
+      m_in = Serial.read();
+      if( m_in < 0 )                      // Status Byte detected?
+        current_status = m_in&0xf0;       // Strip Channel-Information from Statusbyte
+                                          // "else": propably we have a "running status", meaning status has not changed, data bytes keep on coming...
+      switch(current_status )             // If we did not detect a statusbyte, then the last status received will be [re]used for "running status"
       {
-        midi_sendControlChange(21, new_val, 1);     // MIDI.sendControlChange(controlNumber, controlValue, channel);
-        last_in1_pot1 = new_val;
+        case 0x90:                        // MIDI_NOTE_ON ( velocity == 0 ) => note_off!
+          if( Serial.available() )
+            Serial.read();                // Note on pitch, ignore
+          if( Serial.available() )        
+            m_in = Serial.read();         // Note on velocity
+          
+          if( m_in != 0 )                 // Normal Noteon, no zero velocity to be interpreted as note off
+            digital_out = HIGH;           // Gate on
+          else
+            digital_out = LOW;            // Gate off
+          break;
+          
+        case 0x80:                        // MIDI_NOTE_OFF:
+          if( Serial.available() )
+            Serial.read();                // Note off pitch, ignore
+          if( Serial.available() )        
+            Serial.read();                // Note off velocity, ignore
+          digital_out = LOW;              // Gate off
+          break;
+          
+        case 0xb0:                        // MIDI_CC
+          if( Serial.available() )
+            Serial.read();         // Controller-number, ignore
+          if( Serial.available() )        
+            m_in = Serial.read();         // Controller value
+          analog_out = m_in*2;            // Midi data (0-127 to be converted into CV out (0-254), use analog-out port of GRAINS
+          
+        default:                          // Already read one byte to be ignored, waiting for next Statusbyte to be processed (Note on/off or CC)
+          break; 
       }
-      new_val = interpolate(1, in2_pot2, pol_idx);
-      if( last_in2_pot2 != new_val )
-      {
-        midi_sendControlChange(22, new_val, 1);     // MIDI.sendControlChange(controlNumber, controlValue, channel);
-        last_in2_pot2 = new_val;
-      }
-      new_val = interpolate(2, in3, pol_idx);
-      if( last_in3 != new_val )
-      {
-        midi_sendControlChange(23, new_val, 1);     // MIDI.sendControlChange(controlNumber, controlValue, channel);
-        last_in3 = new_val;
-      }
-      new_val = interpolate(3, pot3, pol_idx);
-      if( last_pot3 != new_val )
-      {
-        midi_sendControlChange(24, new_val, 1);     // MIDI.sendControlChange(controlNumber, controlValue, channel);
-        last_pot3 = new_val;
-      }
-      new_val = interpolate(4, audio, pol_idx);
-      if( last_audio != new_val )                     // We allow audio-input as CV to be converted to MIDI here as well.
-      {
-        midi_sendControlChange(25, new_val, 1);     // MIDI.sendControlChange(controlNumber, controlValue, channel);
-        last_audio = new_val;
-      }
-   }
+    }
+  }
+  // --- Process MIDI out, generated by GRAINS from CV in ---
+  if((counter%5) == 0)                            // Slow down midi send rate a bit - change to fit your needs!
+  {
+    pol_idx = ++pol_counter%30;
+    
+    new_val = interpolate(0, in1_pot1, pol_idx);
+    if( last_in1_pot1 != new_val )
+    {
+      midi_sendControlChange(21, new_val, 1);     // MIDI.sendControlChange(controlNumber, controlValue, channel);
+      last_in1_pot1 = new_val;
+    }
+    new_val = interpolate(1, in2_pot2, pol_idx);
+    if( last_in2_pot2 != new_val )
+    {
+      midi_sendControlChange(22, new_val, 1);     // MIDI.sendControlChange(controlNumber, controlValue, channel);
+      last_in2_pot2 = new_val;
+    }
+    new_val = interpolate(2, in3, pol_idx);
+    if( last_in3 != new_val )
+    {
+      midi_sendControlChange(23, new_val, 1);     // MIDI.sendControlChange(controlNumber, controlValue, channel);
+      last_in3 = new_val;
+    }
+    new_val = interpolate(3, pot3, pol_idx);
+    if( last_pot3 != new_val )
+    {
+      midi_sendControlChange(24, new_val, 1);     // MIDI.sendControlChange(controlNumber, controlValue, channel);
+      last_pot3 = new_val;
+    }
+    new_val = interpolate(4, audio, pol_idx);
+    if( last_audio != new_val )                     // We allow audio-input as CV to be converted to MIDI here as well.
+    {
+      midi_sendControlChange(25, new_val, 1);     // MIDI.sendControlChange(controlNumber, controlValue, channel);
+      last_audio = new_val;
+    }
+  }
 }
 // *******************************************************************************************************
 
