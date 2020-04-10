@@ -46,7 +46,7 @@ https://projectgus.github.io/hairless-midiserial
 
 * The so called Midi "running status" is recognized on input, but not used on output, so this firmware should be compatible with any MIDI-hardware or software.
 
-To avoid the complexity of additional libraries, we use our own midi_sendControlChange() method here instead of the standard MIDI.sendControlChange().
+To avoid the complexity of additional libraries, we use our own midi_sendControlChange() method here instead of the standard MIDI.sendControlChange(). MIDI-inut is processed directly as incoming serial data.
 If you want to extend MIDI-capabilities you may want to change this by installing the Arduino MIDI-Library and change this accordingly!
 https://playground.arduino.cc/Main/MIDILibrary/
 For Details regarding integration with "Hairless MIDI<->Serial Bridge" please refer to the site of the project as already mentioned above.
