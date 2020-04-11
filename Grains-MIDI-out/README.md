@@ -34,7 +34,7 @@ __Outputs__
 ## Notes
 
 The Atmega processor used in GRAINS is not capable to send out MIDI via USB directly, but luckily serial data can be converted to MIDI easily.
-A popular way to do this is "Hairless MIDI<->Serial Bridge". Download and documentary for MacOS/Windows/Linux available here:
+A popular way to do this is the free software "Hairless MIDI<->Serial Bridge". Download and documention for MacOS/Windows/Linux available here:
 https://projectgus.github.io/hairless-midiserial
 
 * If you want to use this MIDI data as input for your DAW on your PC you will need a MIDI-loopback device in software or route MIDI-out to MIDI-in with your hardware
