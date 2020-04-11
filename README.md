@@ -26,5 +26,8 @@ __Spell or Speak__
 Synthetic words, as used with a famous toy from the late 70th, can be triggered via Gate-impulses and selcted via CV or a pot  
 For more details concerning usage please refer to the Header-Section of *GrainsSpellOrSpeak.ino*
 
-__Grains Morse__
+__Grains Morse__ 
 This firmware sends gate triggers out of the D output of the GRAINS module according to the international Morse standard. The sentence that is encoded can be changed in the source code or you can enter morse code via an attached MIDI keyboard.
+
+__Grains BufferShuffler__ 
+Audio on A (audio in) is used to fill an audio-buffer. Parts of the audio in this buffer can be looped, sliced, reversed and slowed down, giving various 8bit LoFi effects.   
