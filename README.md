@@ -18,7 +18,7 @@ The GRAINS module can be ordered directly from the tangible waves website at htt
 
 List of Firmwares
 ==================
-__For more details on the individual firmwares please refer to the equivalent README-files that come with them.__
+__For more details on the individual firmwares, please refer to the equivalent README-files that come with them.__
 
 __ByteBeat-Xfade__                                                               
 Two different ByteBeats can be selected and crossfaded. Editing of ByteBeats is possible in the .ino-File.   
