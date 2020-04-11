@@ -29,7 +29,7 @@ Synthetic words, as used with a famous toy from the late 70th, can be triggered 
 __Grains Morse__  
 This firmware sends gate triggers out of the D output of the GRAINS module according to the international Morse standard. The sentence that is encoded can be changed in the source code or you can enter morse code via an attached MIDI keyboard.
 
-__Grains MIDI in__  
+__Grains MIDI out__  
 This Firmware provides the option to send out CVs and/or POTs as MIDI-CC values via MIDI-out over USB.
 As a bonus also MIDI-in over USB can be used to convert any MIDI-Key on/off to Gate and any MIDI-CC to CV for GRAINS.
 Please be aware that along with this Firmware you will also need extra, yet free software on your Windows/MACos/Linux System to route the MIDI-events correctly. 
