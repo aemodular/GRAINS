@@ -1,6 +1,8 @@
 # GRAINS "Midi out"
 an alternative Firmware for the AE Modular GRAINS module by tangible waves (using a samplerate-driven framework) 
-providing the option to send out MIDI control values via USB, plus as a little extra to convert any key on/off to Gate and any CC to CV
+providing the option to send out CVs and/or POTs as MIDI-CCvalues via MIDI-out over USB. 
+
+As a bonus also MIDI-in over USB can be used to convert any MIDI-Key on/off to Gate and any MIDI-CC to CV for GRAINS
 
 To set up the environment needed to install this firmware, please refer to the AeManual for GRAINS on the AE Modular Wiki: http://wiki.aemodular.com/pmwiki.php/AeManual/GRAINS
 
