@@ -28,6 +28,7 @@ Thanks for explanations and examples regarding:
 
 Example-Code for Arduino-realtime-audio-processing from KHM, cologne Germany 
 https://www.khm.de/homeinterface.khm.de/index.php/lab/interfaces-advanced/arduino-realtime-audio-processing/index.html
+
 Backgroundinfos concerning Arduino Muxer, Registervalues etc: 
 http://www.robotplatform.com/knowledge/ADC/adc_tutorial_3.html
 
