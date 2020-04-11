@@ -3,14 +3,6 @@ an alternative Firmware for the AE Modular GRAINS module by tangible waves https
 (using a samplerate-driven framework) reading audio in and filling a buffer with it that can be manipulated in realtime.
 To set up the environment needed to install this firmware, please refer to the AeManual for GRAINS on the AE Modular Wiki: http://wiki.aemodular.com/pmwiki.php/AeManual/GRAINS
 
-Thanks for explanations and examples regarding:
-
-Example-Code for Arduino-realtime-audio-processing from KHM, cologne Germany 
-https://www.khm.de/homeinterface.khm.de/index.php/lab/interfaces-advanced/arduino-realtime-audio-processing/index.html
-
-Backgroundinfos concerning Arduino Muxer, Registervalues etc: 
-http://www.robotplatform.com/knowledge/ADC/adc_tutorial_3.html
-
 * __Demotrack__ for Grains 'BufferShuffler' is available here: https://soundcloud.com/taitekatto/grains-buffershuffler
 
 # Usage of this Firmware with GRAINS:
@@ -31,6 +23,13 @@ __Outputs__
 ## Notes
 
 * Because the size of the audio-buffer available with the ATmega-chip used for GRAINS is rather small, results should be best with percussive material, but of course experimentation is encouraged
+
+Thanks for explanations and examples regarding:
+
+Example-Code for Arduino-realtime-audio-processing from KHM, cologne Germany 
+https://www.khm.de/homeinterface.khm.de/index.php/lab/interfaces-advanced/arduino-realtime-audio-processing/index.html
+Backgroundinfos concerning Arduino Muxer, Registervalues etc: 
+http://www.robotplatform.com/knowledge/ADC/adc_tutorial_3.html
 
 __Caution!__ Use at your own risk (according to GNU General Public License '16. Limitation of Liability')
 
