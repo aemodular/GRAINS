@@ -1,6 +1,6 @@
 # GRAINS "Midi out"
 an alternative Firmware for the AE Modular GRAINS module by tangible waves (using a samplerate-driven framework) 
-providing the option to send out MIDI control values via USB, plus as a little extra convert any key on/off to Gate and any CC to CV
+providing the option to send out MIDI control values via USB, plus as a little extra to convert any key on/off to Gate and any CC to CV
 
 To set up the environment needed to install this firmware, please refer to the AeManual for GRAINS on the AE Modular Wiki: http://wiki.aemodular.com/pmwiki.php/AeManual/GRAINS
 
@@ -44,7 +44,9 @@ https://projectgus.github.io/hairless-midiserial
 * Any Controller-Data sent to GRAINS (via Hairless MIDI or similar) will generate CV via analog out 
 * In terms of performance please avoid unnecessary MIDI-data, for instance clock-signals should be avoided to be sent via Hairless Midi, here
 
-To avoid the complexity of additional libraries, we use our own midi_sendControlChange() method here instead of the standard MIDI.sendControlChange().
+* The so called Midi "running status" is recognized on input, but not used on output, so this firmware should be compatible with any MIDI-hardware or software.
+
+To avoid the complexity of additional libraries, we use our own midi_sendControlChange() method here instead of the standard MIDI.sendControlChange(). MIDI-inut is processed directly as incoming serial data.
 If you want to extend MIDI-capabilities you may want to change this by installing the Arduino MIDI-Library and change this accordingly!
 https://playground.arduino.cc/Main/MIDILibrary/
 For Details regarding integration with "Hairless MIDI<->Serial Bridge" please refer to the site of the project as already mentioned above.
