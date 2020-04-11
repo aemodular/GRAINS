@@ -1,4 +1,5 @@
-# GRAINS "BufferShuffler" an alternative Firmware for the AE Modular GRAINS module by tangible waves https://www.tangiblewaves.com
+# GRAINS "BufferShuffler"
+an alternative Firmware for the AE Modular GRAINS module by tangible waves https://www.tangiblewaves.com
 (using a samplerate-driven framework) reading audio in and filling a buffer with it that can be manipulated in realtime.
 To set up the environment needed to install this firmware, please refer to the AeManual for GRAINS on the AE Modular Wiki: http://wiki.aemodular.com/pmwiki.php/AeManual/GRAINS
 
