@@ -25,9 +25,11 @@ http://nightmachines.tv/the-absolute-beginners-guide-to-coding-bytebeats.html
 Several ByteBeats as used below are from this guide, so big thanks to The Tuesday Night Machines, other ByteBeats were found or generated here:
 http://entropedia.co.uk/generative_music/
 
-* __Demotrack__ for Grains 'ByteBeat-Xfade' is available here: https://soundcloud.com/taitekatto/grains_bytebeat_xfade
+__Demotrack__ for Grains 'ByteBeat-Xfade' is available here: https://soundcloud.com/taitekatto/grains_bytebeat_xfade
 
-* __Tutorial Video__ for this firmware is available on YouTube: https://youtu.be/Wokre1i8Trg
+__Tutorial Video__ for this firmware is available on YouTube: https://youtu.be/Wokre1i8Trg
+
+[![Tutorial ByteBeat-Xfade](https://res.cloudinary.com/marcomontalbano/image/upload/v1586674763/video_to_markdown/images/youtube--Wokre1i8Trg-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/Wokre1i8Trg "Tutorial ByteBeat-Xfade")
 
 # Usage of this Firmware with GRAINS:
 
