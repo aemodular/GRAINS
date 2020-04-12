@@ -1,7 +1,7 @@
 # 'GRAINS Evelope Follower' / 'VU-Meter'  
-an experimental Firmware for the AE Modular GRAINS module by tangible waves https://www.tangiblewaves.com (using a samplerate-driven framework). The goal is to mimic the dynamics on audio-in as CV via the audio-out port. This can be used as a kind of envelope to drive a Filter and/or VCA for instance.
-https://www.tangiblewaves.com/store/p86/GRAINS.html
-  
+an experimental Firmware for the AE Modular GRAINS module by tangible waves https://www.tangiblewaves.com (using a samplerate-driven framework). The goal is to mimic the dynamics on audio-in as CV via the audio-out port. This can be used as a kind of envelope to drive a Filter and/or VCA for instance.  
+To set up the environment needed to install this firmware, please refer to the AeManual for GRAINS on the AE Modular Wiki: http://wiki.aemodular.com/pmwiki.php/AeManual/GRAINS
+
 * __Demotrack__ for Grains 'Palindrome' is available here: https://soundcloud.com/taitekatto/grains-envelopefollower
 
 # Usage of this Firmware with GRAINS:
