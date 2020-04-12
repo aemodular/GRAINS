@@ -36,3 +36,6 @@ Please be aware that along with this Firmware you will also need extra, yet free
 
 __Grains BufferShuffler__  
 The audio-in of GRAINS is used to fill an audio-buffer. Parts of the audio in this buffer can be looped, sliced, reversed and slowed down, giving various 8bit LoFi effects.  
+
+__Grains EnvelopeFollower__   
+Tries to mimic the dynamics on audio-in as CV via the audio-out port. This can be used as a kind of envelope to drive a Filter and/or VCA for instance.  
