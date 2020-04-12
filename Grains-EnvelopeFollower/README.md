@@ -1,4 +1,4 @@
-'GRAINS Evelope Follower' / 'VU-Meter'
+# 'GRAINS Evelope Follower' / 'VU-Meter'  
 an experimental Firmware for the AE Modular GRAINS module by tangible waves https://www.tangiblewaves.com (using a samplerate-driven framework).
 https://www.tangiblewaves.com/store/p86/GRAINS.html
   
