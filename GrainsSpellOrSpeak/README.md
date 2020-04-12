@@ -34,6 +34,8 @@ __Outputs__
 
 __Caution!__ Use at your own risk  (according to GNU General Public License v2 '12. No Warrenty')
 
+# Tutorial Video
+[![Tutorial for SpellOrSpeak](https://res.cloudinary.com/marcomontalbano/image/upload/v1586675057/video_to_markdown/images/youtube--a1aS6E0b0Fk-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/a1aS6E0b0Fk "Tutorial for SpellOrSpeak")
 -------------------------------------------------------------  
 
 This program in combination with the hardware it is applied to can produce harsh and loud frequencies that may be of harm to speakers or your ears! Permanent hearing loss may result from exposure to sound at high volumes. Use as low a volume as possible.
