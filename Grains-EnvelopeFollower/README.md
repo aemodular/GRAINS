@@ -23,7 +23,7 @@ __Outputs__
 
 * The algorithm used here to do the envelope-following is optimized to be as fast as possible
 * In fact the way the envelope-detection is working here, is more like a VU-meter
-* It works quite well with rhythmical content, for slowly evolving sounds prefilering may be helpful, please experiment ;-)
+* It works quite well with rhythmical content, for slowly evolving sounds prefiltering may be helpful, please experiment ;-)
 
 Thanks for explanations and examples regarding:
 
