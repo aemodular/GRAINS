@@ -27,10 +27,6 @@ http://entropedia.co.uk/generative_music/
 
 __Demotrack__ for Grains 'ByteBeat-Xfade' is available here: https://soundcloud.com/taitekatto/grains_bytebeat_xfade
 
-__Tutorial Video__ for this firmware is available on YouTube: https://youtu.be/Wokre1i8Trg
-
-[![Tutorial ByteBeat-Xfade](https://res.cloudinary.com/marcomontalbano/image/upload/v1586674763/video_to_markdown/images/youtube--Wokre1i8Trg-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/Wokre1i8Trg "Tutorial ByteBeat-Xfade")
-
 # Usage of this Firmware with GRAINS:
 
 __Inputs__
@@ -55,6 +51,10 @@ __Outputs__
 3. Long ByteBeats may not work as expeced, because they also might slow down playback speed.
 
 __Caution!__ Use at your own risk (according to GNU General Public License '16. Limitation of Liability')
+
+## Tutorial Video
+
+[![Tutorial ByteBeat-Xfade](https://res.cloudinary.com/marcomontalbano/image/upload/v1586674763/video_to_markdown/images/youtube--Wokre1i8Trg-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/Wokre1i8Trg "Tutorial ByteBeat-Xfade")
 
 -------------------------------------------------------------  
 
