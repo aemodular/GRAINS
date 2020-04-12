@@ -27,6 +27,8 @@ http://entropedia.co.uk/generative_music/
 
 * __Demotrack__ for Grains 'ByteBeat-Xfade' is available here: https://soundcloud.com/taitekatto/grains_bytebeat_xfade
 
+* __Tutorial Video__ for this firmware is available on YouTube: https://youtu.be/Wokre1i8Trg
+
 # Usage of this Firmware with GRAINS:
 
 __Inputs__
