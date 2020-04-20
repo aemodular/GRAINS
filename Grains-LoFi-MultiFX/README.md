@@ -2,7 +2,7 @@
 an alternative Firmware for the AE Modular GRAINS module by tangible waves https://www.tangiblewaves.com (using a samplerate-driven framework) for algorithmic generation of melodies. 
 https://www.tangiblewaves.com/store/p86/GRAINS.html
 
-* __Demotrack__ for Grains 'Palindrome' is available here: https://soundcloud.com/taitekatto/grains-ringmod
+* __Demotrack__ for Grains 'Palindrome' is available here: https://soundcloud.com/taitekatto/grains-lofi-multifx
 
 # Usage of this Firmware with GRAINS:
 
