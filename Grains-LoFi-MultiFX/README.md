@@ -30,7 +30,7 @@ __Outputs__
 * We highly recommend to try out Ringmod with the SquareWave from OSC - if you twist the PULSEWIDTH knob all way up you can get interesting mixes of the sine used for RingMod and the ringmodulated signal
 * Good results for phasing can be obtained for instance with a slow triangle to IN1, to get fast percussive results you may use a squarewave instead
 * Intersting BitCrushing/BitClipping sequences can be applied with an LFO and/or TRIQ164 to IN3
-* If you want to turn BitCrushing/BitClipping on/of or manually select the amount of BitCrushing/BitClipping you may use 2ATT/CV for instance
+* If you want to turn BitCrushing/BitClipping on/off or manually select the amount of BitCrushing/BitClipping you may use 2ATT/CV for instance
 * Modulating the Frequency of the SineWave/Ringmod via CV, for instance from an LFO is another interesting option
 * (Digital) NOISE can give interesting results, especially with the WaveFolder and PhaseShifter
 * When using digital sounds as input you may end up with high frequency aliasing, so adding a lowpass filter on output is suggested in this case
