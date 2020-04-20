@@ -39,3 +39,6 @@ The audio-in of GRAINS is used to fill an audio-buffer. Parts of the audio in th
 
 __Grains EnvelopeFollower__   
 Tries to mimic the dynamics on audio-in as CV via the audio-out port. This can be used as a kind of envelope to drive a Filter and/or VCA for instance.  
+
+__Grains LoFi-MultiFX__ 
+SinusGenerator/RingModulator/PitchShifter/PhaseShifter/BitCrusher/BitClipper/WaveFolder + Gate. There are 5 preset combinations of these effects to select from. Many parameters can be modulated.
