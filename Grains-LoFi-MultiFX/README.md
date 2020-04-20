@@ -10,14 +10,15 @@ __Inputs__
 
 * A:          Audio input
 * IN1 / Pot1: Shift Phase: To get a Phaser-effect please modulate with an LFO (slow triangle for the well know effect)
-* IN2 / Pot2: Frequency of sine for RingMod, or sine itself, if no signal on input
+* IN2 / Pot2: Frequency of sine for RingMod, or sine itself, if no signal on input or PitchShift
 * IN3:        BitCrusher/BitClipper: set amount from 0 to 7 (8 to 1 bit)
-* Pot3:       Modeselector: Different routings and options of differnet effects, from left to right: 
+* Pot3:       Modeselector: Different routings and options of differnet effects, from left to right:
+ 
               Mode 1: Audio->RingMod->PhaseShifter->BitCrusher                    
               Mode 2: Audio->WaveFolder->RingMod->BitCrusher->PhaseShifter
               Mode 3: Audio->PitchShift->BitClip->PhaseShifter                                                  
               Mode 4: SineWave->BitClip->PhaseShifter                                                   
-              Mode 5: Audio->BitCrusher->PitchShifter->BitCrusher
+              Mode 5: Audio->BitCrusher->PitchShifter->BitCrusher (here IN2/Pot2 will modulate the first BitCrusher)
 
 __Outputs__
 
