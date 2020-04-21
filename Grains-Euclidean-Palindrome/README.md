@@ -41,7 +41,7 @@ The two patterns combined would result in the equivalent of "C.E.G.C.E.G" to be 
 As another example "07470" and "x..x." would give "C..G.E..G.C..C." and so on.  
 So, even though the main idea here is to combine Björklung/Euclidian patterns with numeric panidromes, the notation can be used for many other purposes  
 
-Thanks for explanations and examples regarding:
+__Thanks__ for explanations and examples regarding:
 
 Example-Code for Arduino-realtime-audio-processing from KHM, cologne Germany
 http://interface.khm.de/index.php/lab/interfaces-advanced/arduino-realtime-audio-processing/index.html
