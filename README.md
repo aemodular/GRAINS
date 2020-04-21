@@ -44,4 +44,4 @@ __Grains LoFi-MultiFX__
 SinusGenerator/RingModulator/PitchShifter/PhaseShifter/BitCrusher/BitClipper/WaveFolder + Gate. There are 5 preset combinations of these effects to select from. Many parameters can be modulated.
 
 __Grains Euclidean-Palindrome__     
-Rhythm- and note-patterns can be combined and scale-corrected in various ways. The main sources for this generative tool are Eucledian rhythms and palindromic numbers. Clock-synced sound-output is provided as bamboo mallet-samples, gate-out can be used to generate additional ryhthms by triggering different modules.
+Rhythm- and note-patterns can be combined  in various ways and optionally scale-corrected. The main sources for this generative tool are Eucledian rhythms and palindromic numbers. Clock-synced sound-output is provided as bamboo mallet-samples, gate-out can be used to generate additional ryhthms by triggering different modules.
