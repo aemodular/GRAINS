@@ -24,11 +24,9 @@ __Outputs__
 * The main source for rhythm- and note-patterns used here are Eucledian rhythms and panlindromic numbers
 * For the Bjorklund/Eucledian rhythm algorithm please refer to the paper "The Euclidean Algorithm Generates Traditional Musical Rhythms" by Godfried Toussaint: http://cgm.cs.mcgill.ca/~godfried/publications/banff.pdf
 * For palindrome numbers please have a look at: https://en.wikipedia.org/wiki/Palindromic_number
-
 * To add your own sequence of notes, please search for "note_pattern[]" and change or add the content there
 * To add your own sequence of gates, please search for "gate_pattern[]" and change or add the content there
 * To add your own sequence scale-correction, please search for "scale_pattern[]" and change or add the content there
-* 
 * The notation for Notevalues is '0'-'9' and 'a'-'z' to provide notes over 3 Octaves from C to b'
 * So, for instance "047" would be C,E,G to be played in a loop.
 * The notation for gatevalues is a pattern of 'x' and '.', where 'x' would mark an open gate (the beat) and '.' a closed gate (a pause)
@@ -36,10 +34,9 @@ __Outputs__
 * The two patterns combined would result in the equivalent of "C.E.G.C.E.G" to be played as sample-notes and so on and on.
 * As another example "07470" and "x..x." would give "C..G.E..G.C..C." and so on.
 * So, even though the main idea here is to combine Björklung/Euclidian patterns with numeric panidromes, the notation can be used for many other purposes
-
 * The _Bamboo Samples_ used in this Firmware are taken from the Sample-collection that comes with the Mozzi Library, 
 * the GNU General Public License v3 "or newer" is applied here, too. https://sensorium.github.io/Mozzi
-* The 'b'-note had to be substitued with 'bb', you could use your own samples instead, please search for "bamboo[12]" and change the contents there. 
+* The 'b'-note had to be substitued with 'bb', you could use your own samples instead, please search for "bamboo[12]" and change the contents there.
 * In order to generate your own sample-content, please use raw-audio files with signed 8bit content 
 * You can convert these to the format used here with the Python script "char2mozzi.py" that is part of the Mozzi-library.
 
