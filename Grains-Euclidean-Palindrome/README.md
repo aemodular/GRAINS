@@ -21,7 +21,7 @@ __Outputs__
 
 ## Notes
 
-* The main source for rhythm- and note-patterns used here are Eucledian rhythms and panlindromic numbers
+* The main source for rhythm- and note-patterns used here are Eucledian rhythms and palindromic numbers
 * For the Bjorklund/Eucledian rhythm algorithm please refer to the paper "The Euclidean Algorithm Generates Traditional Musical Rhythms" by Godfried Toussaint: http://cgm.cs.mcgill.ca/~godfried/publications/banff.pdf
 * For palindrome numbers please have a look at: https://en.wikipedia.org/wiki/Palindromic_number
 * To add your own sequence of notes, please search for "note_pattern[]" and change or add the content there
