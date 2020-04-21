@@ -42,3 +42,6 @@ Tries to mimic the dynamics on audio-in as CV via the audio-out port. This can b
 
 __Grains LoFi-MultiFX__     
 SinusGenerator/RingModulator/PitchShifter/PhaseShifter/BitCrusher/BitClipper/WaveFolder + Gate. There are 5 preset combinations of these effects to select from. Many parameters can be modulated.
+
+__Grains Euclidean-Palindrome__     
+Rhythm- and note-patterns can be combined and scale-corrected in various ways. The main source for this generative tool are Eucledian rhythms and palindromic numbers. Clock-synced sound-output is provided as bamboo mallet-samples, gate-out can be used to trigger additional ryhthms.
