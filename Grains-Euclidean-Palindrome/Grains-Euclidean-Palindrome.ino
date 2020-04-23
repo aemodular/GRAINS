@@ -283,7 +283,7 @@ static byte octave_factor = 1;    // Lowest octave: every 3 loops, middle octave
     
     if( tolower(gate_pattern[gate_pat_idx][gate_idx]) == 'x' )  // Note to be played, "active" gate pattern event
     {
-      isdigit(note_pattern[note_pat_idx][note_idx]) ? bamboo_idx = note_pattern[note_pat_idx][note_idx]-'0' : bamboo_idx = (note_pattern[note_pat_idx][note_idx]-'a')+10;
+      isdigit(note_pattern[note_pat_idx][note_idx]) ? bamboo_idx = note_pattern[note_pat_idx][note_idx]-'0' : bamboo_idx = (tolower(note_pattern[note_pat_idx][note_idx])-'a')+10;
       sample_idx = 0;                           // start to Playback sample now, else we'll have silence (maybe after playing last sample to end or
       counter = 0;                              // Reset counter that decides on octaves during playback loop (see above)
       octave_factor  = constrain(3-bamboo_idx/12, 1, 3);  // Will be 1, 2 or 3, depending on octave (3: lowest, 2: middle, 1: upper);
