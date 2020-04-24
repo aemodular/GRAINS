@@ -12,9 +12,9 @@ __Inputs__
 * IN2 / Pot2: Select rhythm pattern from a list (mainly Euclidean/Borklund rhythms) to trigger the sample
 * IN3:        Select rhythm pattern from a list (mainly Euclidean/Borklund rhythms) to trigger separate gate events
 * Pot3:       Select scale for scale-correction from list for pitch of (bamboo) samples    
-              __Special-mode for Pot3__       
-              If IN1/Pot1 is min no scale-correction is needed, Pot3 will be used instead to change the index of rhythm patterns 1 and 2   
-              This can be useful to reset those patterns, when set to min or to combine the rhythms of samples and gate-out interactively  
+              __Special-mode for Pot3:__       
+              If IN1/Pot1 is min, no scale-correction is needed! Pot3 will be used instead to change the index of the rhythm patterns  
+              This can be useful to reset those patterns, when set to min or to change the rhythms of samples and gate-out interactively  
 * A:          Clock input - be sure to use BEAT DEVIDER for decent results, for arbitrary speed a Sqarewave-LFO could be used instead
 
 
