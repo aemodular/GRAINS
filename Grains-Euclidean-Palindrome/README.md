@@ -11,8 +11,11 @@ __Inputs__
 * IN1 / Pot1: Select note-sequence pattern from a list (mainly palindromic numbers) to select pitch of (bamboo)samples
 * IN2 / Pot2: Select rhythm pattern from a list (mainly Euclidean/Borklund rhythms) to trigger the sample
 * IN3:        Select rhythm pattern from a list (mainly Euclidean/Borklund rhythms) to trigger separate gate events
-* Pot3:       Select scale for scale-correction from list for pitch of (bamboo) samples
+* Pot3:       Select scale for scale-correction from list for pitch of (bamboo) samples (or special mode as below)
+              Special-mode for Pot3: if IN1/Pot1 is set to min (only one note) Pot3 will be used to change the index of rhythm patterns 1 and 2
+              -> This can be useful to reset those patterns, when set to min or to combine the rhythms of samples and gate-out interactively!
 * A:          Clock input - be sure to use BEAT DEVIDER for decent results, for arbitrary speed a Sqarewave-LFO could be used instead
+
 
 __Outputs__
 
@@ -32,6 +35,8 @@ __Outputs__
 * The 'b'-note had to be substitued with 'bb', you could use your own samples instead, please search for "bamboo[12]" and change the contents there.
 * In order to generate your own sample-content, please use raw-audio files with signed 8bit content 
 * You can convert these to the format used here with the Python script "char2mozzi.py" that is part of the Mozzi-library.
+
+* Special mode for Pot3 as explained above, can behave strangely with long patterns, due to limited processing power, but you may use this creatively ;-)
 
 The notation for Notevalues is '0'-'9' and 'a'-'z' to provide notes over 3 Octaves from C to b'  
 So, for instance "047" would be C,E,G to be played in a loop.  
