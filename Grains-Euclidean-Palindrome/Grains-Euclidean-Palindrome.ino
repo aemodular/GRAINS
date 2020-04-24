@@ -12,7 +12,9 @@ __Inputs__
 * IN1 / Pot1: Select note-sequence pattern from a list (mainly palindromic numbers) to select pitch of (bamboo)samples
 * IN2 / Pot2: Select rhythm pattern from a list (mainly Euclidean/Borklund rhythms) to trigger the sample
 * IN3:        Select rhythm pattern from a list (mainly Euclidean/Borklund rhythms) to trigger separate gate events
-* Pot3:       Select scale for scale-correction from list for pitch of (bamboo) samples
+* Pot3:       Select scale for scale-correction from list for pitch of (bamboo) samples (or special mode as below)
+              Special-mode for Pot3: if IN1/Pot1 is set to min (only one note) Pot3 will be used to change the index of rhythm patterns 1 and 2
+              -> This can be useful to reset those patterns, when set to min or to combine the rhythms of samples and gate-out interactively!
 * A:          Clock input - be sure to use BEAT DEVIDER for decent results, for arbitrary speed a Sqarewave-LFO could be used instead
 
 __Outputs__
@@ -34,6 +36,8 @@ __Outputs__
 * The 'b'-note had to be substitued with 'bb', you could use your own samples instead, please search for "bamboo[12]" and change the contents there.
 * In order to generate your own sample-content, please use raw-audio files with signed 8bit content 
 * You can convert these to the format used here with the Python script "char2mozzi.py" that is part of the Mozzi-library.
+
+* Special mode for Pot3 as explained above, can behave strangely with long patterns, due to limited processing power, but you may use this creatively ;-)
 
 __Tables used for the mentioned patterns__ please have a look directly after this header-section and the #defines and #includes
 
@@ -261,7 +265,10 @@ static char* bamboo_ptr = bamboo[0][0];             // Pointer to beginning of c
 
 static unsigned int counter = 0;  // In combinatin with octave_factor we decide how often per loop (about 16khz frequency) we playback one sample byte
 static byte octave_factor = 1;    // Lowest octave: every 3 loops, middle octave, every two loops, upper octave every loop one samply-byte is processed
+static byte last_gate_idx = 0;    // We need this for the alternative "change circle-index of Björklund-Pattern 1" of in3_pot3
+static byte last_gate2_idx = 0;   // We need this for the alternative "change circle-index of Björklund-Pattern 2" of in3_pot3
 
+  // --- This is where we actually generate the audio of the mallet samples (if to be played) ---
   if( sample_idx < 2047 )         // Playback next byte of sample until end of sample reached
   {
     if(++counter%octave_factor == 0)  // We select the octave (upper, mid or lower) to be played by either playing every round, every second or every first          
@@ -275,15 +282,29 @@ static byte octave_factor = 1;    // Lowest octave: every 3 loops, middle octave
   {                                                 // We have a new note or pause to play (high or low gate) with each clock!
     note_pat_idx = min( note_pattern_max_idx, in1_pot1 * note_pattern_size / 255);  // Select note-pattern depending on setting of Pot1 
     gate_pat_idx = min( gate_pattern_max_idx, in2_pot2 * gate_pattern_size / 255);  // Select gate-pattern depending on setting of Pot2 
-    gate2_pat_idx = min( gate_pattern_max_idx, in3 * gate_pattern_size / 255);      // Select seconde gate-pattern depending on setting of in2 
+    gate2_pat_idx = min( gate_pattern_max_idx, in3 * gate_pattern_size / 255);      // Select second gate-pattern depending on setting of in2 
     scale_pat_idx = min( scale_pattern_max_idx, pot3 * scale_pattern_size / 255);   // Select scale-pattern depending on setting of Pot3
     gates_len = min(255, strlen(gate_pattern[gate_pat_idx]) );    // We have to calculate the number of steps in the gates pattern to calculate ring-index!
     gates2_len = min(255, strlen(gate_pattern[gate2_pat_idx]) ); // Also calculate lenght of second active gate-pattern
     notes_len = min(255, strlen(note_pattern[note_pat_idx]) );  // We only calculate number of notes for pattern with new clock to gain performance
-    
+
+    // --- We decide here if we use Pot3 for scale selection or to set the index of the Björklund-patterns, in other words shift the circle of a string of Euclidean rhythm-events ---
+    if(!note_pat_idx)  // in1_pot1 is "low"/all way left, we switch to select index of Björklund-string instead of scale, which is not needed, because only one note will be played
+    {
+      byte cur_gate_idx = pot3 * (gates_len-1) / 255;                       // Calculate potential setting of Gate-pattern 1 depending on Pot3
+      byte cur_gate2_idx = pot3 * (gates_len-1) / 255;                      // Calculate potential setting of Gate-pattern 2 depending on Pot3
+
+      if( cur_gate_idx!=last_gate_idx && cur_gate2_idx!=last_gate2_idx )    // Check if Pot3 has a different setting
+      {
+        last_gate_idx = gate_idx = cur_gate_idx;                            // Set new index of Gate-pattern 1, twist pot3 all way left to reset index
+        last_gate2_idx = gate2_idx = cur_gate2_idx;                         // Set new index of Gate-pattern 2, twist pot3 all way left to reset index
+      }               // "else": we leave the incrementing of the gate-patterns as it is normally, so no resetting of the index of those patterns!
+    }                 // "else": we stick with Pot3 changing the scales... - because Note-Pattern one consists of one note only we actually don't have to care about scales, here!
+
+    // --- Here we mainly find out which note to play ---
     if( tolower(gate_pattern[gate_pat_idx][gate_idx]) == 'x' )  // Note to be played, "active" gate pattern event
     {
-      isdigit(note_pattern[note_pat_idx][note_idx]) ? bamboo_idx = note_pattern[note_pat_idx][note_idx]-'0' : bamboo_idx = (tolower(note_pattern[note_pat_idx][note_idx])-'a')+10;
+      isdigit(note_pattern[note_pat_idx][note_idx]) ? bamboo_idx = note_pattern[note_pat_idx][note_idx]-'0' : bamboo_idx = (note_pattern[note_pat_idx][note_idx]-'a')+10;
       sample_idx = 0;                           // start to Playback sample now, else we'll have silence (maybe after playing last sample to end or
       counter = 0;                              // Reset counter that decides on octaves during playback loop (see above)
       octave_factor  = constrain(3-bamboo_idx/12, 1, 3);  // Will be 1, 2 or 3, depending on octave (3: lowest, 2: middle, 1: upper);
@@ -292,12 +313,14 @@ static byte octave_factor = 1;    // Lowest octave: every 3 loops, middle octave
     }
     else
       analog_out = 128;                           // No sample to be played, set to relative 0 (DC offset is 127 for "Arduino-Logic") also valid for CV mode
-      
+
+    // --- Decide if we have a low or high gate - please note, that in contrast to sample a gate is only opened if a trigger event is not followed by another one ---  
     if( tolower(gate_pattern[gate2_pat_idx][gate2_idx]) == 'x' )  // Separate Gate to be HIGH or LOW from gate2 pattern event
       digital_out = HIGH;                         // Open gate (Gate is closed on init) Note: we can play samples without Gate-trigger, but we need it for the optional CV-out for sure! 
     else                                          // "Inactive" gate pattern event, normally a '.'
       digital_out = LOW;                          // Close Gate
- 
+
+    // --- Increment the gate-counters for next round! ---
     gate_idx = ++gate_idx % gates_len;            // Remember position for next round, use index within ring of gate-events for (Sample-)notes 
     gate2_idx = ++gate2_idx % gates2_len;         // Remember position for next round, use index within ring of gate-events for Gate-events
   }
