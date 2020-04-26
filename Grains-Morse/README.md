@@ -69,6 +69,8 @@ Please note: in contrast to a Computer-Keyboard we have _no_ autorepeat for ente
 
 __Caution!__ Use at your own risk (according to GNU General Public License '16. Limitation of Liability')
 
+## Tutorial Video
+[![Morse Code Tutorial](https://res.cloudinary.com/marcomontalbano/image/upload/v1587861510/video_to_markdown/images/youtube--eOKdMpQAoEw-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/eOKdMpQAoEw "Morse Code Tutorial")
 -------------------------------------------------------------  
 
 This program in combination with the hardware it is applied to can produce harsh and loud frequencies that may be of harm to speakers or your ears! Permanent hearing loss may result from exposure to sound at high volumes. Use as low a volume as possible.
