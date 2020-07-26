@@ -5,7 +5,7 @@ __IMPORTANT__
 
 This is a community project and __NOT__ official firmware from tangible waves! tangible waves makes no promise that the firmwares will work on the hardware that tangible waves produces and sells. Further tangible waves accepts no responsibility for any damage caused to the any product where these firmwares will be installed!
 
-If you own the new revision of GRAINS please make sure to set the Mode-Switch to 'G' to use any of the Firmwares available for download here.
+If you own the new revision of GRAINS please make sure to set the __Mode-Switch to 'G'__ to use any of the Firmwares available for download here.
 This Mode-Switch selects the internal audio-out pin, 'G' is for 'Ginkosynthese / original Grains mode', whereas 'M' is needed for 'Mozzi mode' in connection with different firmwares available here: https://github.com/aemodular/MOZZI-GRAINS 
 
 __How to__
