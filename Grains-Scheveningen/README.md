@@ -1,10 +1,26 @@
 # "Scheveningen" 
 
-An alternative Firmware for the AE Modular GRAINS module by tangible waves
+An alternative Firmware for the AE Modular GRAINS module by tangible waves and the GRAINS Eurorack module by Ginkosynthese.
 
 https://www.tangiblewaves.com/store/p86/GRAINS.html
 
-This is a modern take on West Coast Synthesis made in The Hague by Kassen Oud (https://www.facebook.com/kassen.oud)
+and
+
+https://www.ginkosynthese.com/
+
+This is a modern take on West Coast Synthesis made in The Hague by Kassen Oud (https://www.facebook.com/kassen.oud). 
+
+We use two sine waves, the first we'll call the "master", the second the
+"slave". The master just tracks the pitch CV. The slave is some set
+interval above the master. In addition the slave is hard-synced to the
+master. These two are ring-modulating each other. This is followed by a
+wave-folder; a classical "West Coast" style effect which is a bit like a
+clip, except once the wave hits the maximum excursion it "folds" back
+towards the centre. Of these two effects, the ring-modulator and the
+wave-wrapper, the first is more mellow and smooth, while the second tends
+to be more up-front. By combining those, and modulating them, we can get a
+rich pallet of timbres from a relatively simple module like the Grains.
+
   
 To set up the environment needed to install this firmware, please refer to the AeManual for GRAINS on the AE Modular Wiki: http://wiki.aemodular.com/pmwiki.php/AeManual/GRAINS
  
@@ -17,7 +33,7 @@ https://forum.aemodular.com
 
 __Inputs__
 
-* IN1 / Pot1: Controls gain which goes quickly into distortion, if controlled via CV the Pot will control the depth of CV control 
+* IN1 / Pot1: Offset of the slave oscillator's pitch, relative to the master's, if controlled via CV the Pot will control the depth of CV control 
 * IN2 / Pot2: Controls an internal Wavefolder, if controlled via CV the Pot will control the depth of CV control 
 * IN3 / Pot3: Controls the pitch of the oscillator, if controlled via CV the pot will add to the CV pitch
 

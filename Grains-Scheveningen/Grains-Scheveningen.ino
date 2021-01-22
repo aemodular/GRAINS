@@ -1,42 +1,78 @@
 /*
-	"GRAINS Scheveningen"; a take on the "West Coast" style of synthesis made in The Hague.
-	All synthesis bits written by Kassen Oud, using infrastructure borrowed from Peter Knight
+	"West Coast Osc" / "Scheveningen"; an oscillator for the Ginko Synthese "Grains" module,
+	by Kassen Oud. This is based on the "West Coast" style of synthesis, where
+	we build up sounds starting with a simple waveform and adding harmonics, as
+	opposed to starting with a harmonically rich sound and filtering that down.
+	All synthesis bits written by Kassen Oud, using infrastructure borrowed from
+	Peter Knight's work, which was adapted by Jan Willem before I got my hands on
+	it.
 
-
-	TODO; 
-		interpolate wrap control
-		try a bit of LPF at the end against aliassing
-
-	---------------------------------------------------------------------------------------
-	
-	This program in combination with the hardware it is applied to can produce harsh and loud 
-	frequencies that may be of harm to speakers or your ears! Permanent hearing loss may result 
-	from exposure to sound at high volumes. Use as low a volume as possible.
-
-	'GRAINS Scheveningen' is an experimental Firmware for the AE Modular GRAINS module by tangible waves
-
-	Copyright (C) 2021  Kassen Oud (https://www.facebook.com/kassen.oud)
-
+LICENSE:
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
-	any later version.
-
+	(at your option) any later version.
+	
 	This program is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-
+	
 	You should have received a copy of the GNU General Public License
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+DESCRIPTION:
+	We use two sine waves, the first we'll call the "master", the second the
+	"slave". The master just tracks the pitch CV. The slave is some set
+	interval above the master. In addition the slave is hard-synced to the
+	master. These two are ring-modulating each other. This is followed by a
+	wave-folder; a classical "West Coast" style effect which is a bit like a
+	clip, except once the wave hits the maximum excursion it "folds" back
+	towards the centre. Of these two effects, the ring-modulator and the
+	wave-wrapper, the first is more mellow and smooth, while the second tends
+	to be more up-front. By combining those, and modulating them, we can get a
+	rich pallet of timbres from a relatively simple module like the Grains.
+
+	I tried to comment all of this so people who'd like to can learn from it or
+	borrow ideas. However, because we're also trying to do fairly advanced 
+	stuff on a modest CPU, there is some trickery going on that may be hard to
+	understand for people who aren't yet familiar with the intricacies of 
+	digital integer math and bitwise operations. If that's you then perhaps the
+	"PWM-SAW" code would be a better place to start your journey.
+
+MANUAL:
+	Knob 1 / mod 1:
+		Offset of the slave oscillator's pitch, relative to the master's.
+	Knob 2 / mod 2:
+		Amount of wave-folding.
+	Knob 3: Base Tuning.
+		Sets the base pitch.
+	Mod 3; Pitch Modulation
+		This CV gets added to the value set by Knob 3.
+
+CHANGELOG:
+	Oct 2 2020; initial release
 */
 
+//libraries used
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <avr/pgmspace.h>
 
-uint16_t master_phase;
-uint16_t phase_inc;
+//variables
+bool master_polarity = 0;
+bool slave_polarity = 0;
+uint8_t output = 0;
+uint16_t master_phase = 0;
+uint16_t phase_inc = 1;
+uint16_t slave_offset_current = 1;
+uint16_t slave_offset_measured = 1;
+uint16_t wrap_factor = 64;
+uint16_t neg_wrap_factor = 64;
+uint16_t slave_phase = 0;
+uint16_t master_value = 0;
+uint16_t slave_value = 0;
+uint32_t accumulator = 0; //I want a hardware accumulator :-(
 
 // Map inputs
 #define SLAVE_KNOB			(A2)
@@ -49,9 +85,6 @@ uint16_t phase_inc;
 //    Output is on pin 11
 #define PWM_PIN       11
 #define PWM_VALUE     OCR2A
-#define LED_PIN       13
-#define LED_PORT      PORTB
-#define LED_BIT       5
 #define PWM_INTERRUPT TIMER2_OVF_vect
 
 //table mapping CV values measured to phase increase per sample
@@ -142,43 +175,34 @@ void audioOn() {
 void setup() {
   pinMode(PWM_PIN,OUTPUT);
   audioOn();
-  pinMode(LED_PIN,OUTPUT);
 }
 
-uint16_t slave_offset_current = 1;
-uint16_t slave_offset_measured = 1;
-uint16_t wrap_factor = 64;
-uint16_t neg_wrap_factor = 64;
 
 void loop() {
 	//calculate the pitch
 	int pwmv = min( 1023,  analogRead(PITCH_CV) + analogRead(PITCH_KNOB));
 	//look up the phase increase per sample
 	phase_inc = mapFreq(pwmv);
-
+	//Measure the slave osc's frequency offset
+	//we later smooth this to avoid unintended clicks in the sound
 	slave_offset_measured = analogRead( SLAVE_KNOB );
+	//Measure the amoun of wave-folding needed. This actually results in 2
+	//values as we use asymmetrical wave-folding to preserve more of the fundamental
 	wrap_factor =  min( 64 + ( analogRead(WRAP_KNOB) >> 1 ), 511);
 	neg_wrap_factor = max( wrap_factor >> 1, 64 );
 }
 
-uint16_t slave_phase = 0;
-uint16_t master_value = 0;
-uint16_t slave_value = 0;
-bool master_polarity = 0;
-bool slave_polarity = 0;
-
-
-uint8_t output = 0;
-uint32_t accumulator = 0; //I want a hardware accumulator :-(
 
 SIGNAL(PWM_INTERRUPT)
 {
+	//increase the master phase
 	master_phase += phase_inc;
 
+	//slave osc pitch offset smoothing. Without this we'd get undesired clicks in the sound
 	if (slave_offset_current < slave_offset_measured) slave_offset_current++;
 	else if (slave_offset_current > slave_offset_measured) slave_offset_current--;
 
-	//turn master into a sine, or rather a close aproximation. The proper sine function
+	//turn master into a sine, or rather; a close approximation. The proper sine function
 	//is slow and practical tables are lo-fi and/or slow as progmem is so slow
 	master_value = master_phase;
 	master_value <<= 1;
@@ -188,12 +212,12 @@ SIGNAL(PWM_INTERRUPT)
 	master_value >>= 8;
 	master_polarity = master_phase & 0b1000000000000000;
 
-	//calulate the slave phase in 32bit resolution
+	//calculate the slave phase in 32bit resolution
 	//multiply the phase by a 10 bit number, then go down 8 bits again
-	//the result will be a 2 octave increase max
-	//on top of that we say that we want the slave to at least run at
-	//the master's phase's rate
-	//finally we truncate back into 16 bit, as though the slave phase flowed over
+	//the result will be a 2 octave increase max.
+	//On top of that we say that we want the slave to at least run at
+	//the master's phase's rate.
+	//Finally we truncate back into 16 bit, as though the slave phase flowed over
 	accumulator = master_phase;
 	accumulator *= slave_offset_current;
 	accumulator >>= 8;
@@ -202,7 +226,7 @@ SIGNAL(PWM_INTERRUPT)
 
 	slave_phase = accumulator;
 
-	//turn slave into a sine too
+	//turn slave into a sine too, like we did with the master.
 	slave_value = slave_phase;
 	slave_value <<= 1;
 	slave_value >>= 8;
@@ -219,8 +243,8 @@ SIGNAL(PWM_INTERRUPT)
 
 	master_value = master_value >> 1;
 
-	//wave-wrapping can result in freuencing doubling, and we want to preserve bass
-	//so we use asymetrical wave-wrapping
+	//wave-wrapping can result in frequency doubling, and we want to preserve bass
+	//so we use asymmetrical wave-wrapping
 	master_value *= master_polarity?wrap_factor:neg_wrap_factor;
 
 	//bit-shifting by 8 bits is way faster than by other amounts
@@ -242,8 +266,6 @@ SIGNAL(PWM_INTERRUPT)
 	{
 		master_value = 127 - (master_value & 0b0000000001111111);
 	}
-
-	if (master_value >  (uint16_t)127) master_value = (uint16_t)127;
 
 	//only now do we make a bipolar signal
 	if (master_polarity) output = 127 - master_value;
