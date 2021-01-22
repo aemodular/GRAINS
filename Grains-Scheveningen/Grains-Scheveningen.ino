@@ -1,11 +1,34 @@
 /*
-	"Scheveningen"; a take on the "West Coast" style of synthesis made in The Hague.
+	"GRAINS Scheveningen"; a take on the "West Coast" style of synthesis made in The Hague.
 	All synthesis bits written by Kassen Oud, using infrastructure borrowed from Peter Knight
 
 
 	TODO; 
 		interpolate wrap control
 		try a bit of LPF at the end against aliassing
+
+	---------------------------------------------------------------------------------------
+	
+	This program in combination with the hardware it is applied to can produce harsh and loud 
+	frequencies that may be of harm to speakers or your ears! Permanent hearing loss may result 
+	from exposure to sound at high volumes. Use as low a volume as possible.
+
+	'GRAINS Scheveningen' is an experimental Firmware for the AE Modular GRAINS module by tangible waves
+
+	Copyright (C) 2021  Kassen Oud (https://www.facebook.com/kassen.oud)
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include <avr/io.h>
