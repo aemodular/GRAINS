@@ -1,6 +1,6 @@
 # "Scheveningen" 
 
-an alternative Firmware for the AE Modular GRAINS module by tangible waves
+An alternative Firmware for the AE Modular GRAINS module by tangible waves
 
 https://www.tangiblewaves.com/store/p86/GRAINS.html
 
@@ -10,7 +10,7 @@ To set up the environment needed to install this firmware, please refer to the A
  
 ## Note
 
-This firmware is works, but there are still a few things that can be improved. Please play around with it and post your comments on the forum at
+This firmware works, but there are still a few things that can be improved. Please play around with it and post your comments on the forum at
 https://forum.aemodular.com
 
 # Usage of this Firmware with GRAINS:
@@ -27,9 +27,8 @@ __Outputs__
 
 __Caution!__ Use at your own risk  (according to GNU General Public License v2 '12. No Warrenty')
 
-# Tutorial Video
-
--------------------------------------------------------------  
+# Tutorial Video 
+This is currently in the works!
 
 ---
 This program in combination with the hardware it is applied to can produce harsh and loud 
