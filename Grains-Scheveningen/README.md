@@ -28,7 +28,7 @@ __Outputs__
 __Caution!__ Use at your own risk  (according to GNU General Public License v2 '12. No Warrenty')
 
 # Tutorial Video 
-This is currently in the works!
+The video by The 5th Volt explains in detail how to use this firmware: https://youtu.be/5bPDJzVtN6k
 
 ---
 This program in combination with the hardware it is applied to can produce harsh and loud 
