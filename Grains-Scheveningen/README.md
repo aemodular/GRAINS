@@ -28,7 +28,8 @@ __Outputs__
 __Caution!__ Use at your own risk  (according to GNU General Public License v2 '12. No Warrenty')
 
 # Tutorial Video 
-The video by The 5th Volt explains in detail how to use this firmware: https://youtu.be/5bPDJzVtN6k
+The video by The 5th Volt explains in detail how to use this firmware. 
+[![GRAINS Scheveningen](https://res.cloudinary.com/marcomontalbano/image/upload/v1611316374/video_to_markdown/images/youtube--5bPDJzVtN6k-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/5bPDJzVtN6k "GRAINS Scheveningen")
 
 ---
 This program in combination with the hardware it is applied to can produce harsh and loud 
