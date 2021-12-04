@@ -7,7 +7,9 @@ To set up the environment needed to install this firmware, please refer to the A
 When the module receives a gate on input A, it tosses a (virtual) coin. Depending on the outcome
 of the coin toss the gate is set to output _OUT_ or _D_
 
-The probablity can be influeced by setting input IN1/Pot1: When IN1/Pot1 is set to the middle position, the chance of heads/tails is 50/50. The more the input is set to the left or to the right, the higher the probablity of either heads or tails as a result of the coin toss.
+The probablity can be influenced by setting input IN1/Pot1: When IN1/Pot1 is set to the middle position, the chance of heads/tails is 50/50. The more the input is set to the left or to the right, the higher the probablity of either heads or tails as a result of the coin toss.
+
+When Pot2 is turned to the right, latch mode is enabled. In latch mode output _OUT_ or _D_ stay high until the other output gets activated.
 
 * __Demovideo__ for Grains 'Bernoulli Gate' is available here: https://www.youtube.com/watch?v=tPaAOLuh5cg
 
@@ -16,6 +18,7 @@ The probablity can be influeced by setting input IN1/Pot1: When IN1/Pot1 is set 
 __Inputs__
 
 * IN1 / Pot1: Set the probability of the outcome of the coin toss (heads/tails)
+* IN2 / Pot2: Switch between "normal" mode and "latch" mode. Turn Pot2 to the left for normal mode. Turn Pot2 right for latch mode.
 * A:          Gate input
 
 __Outputs__
