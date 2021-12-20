@@ -8,7 +8,9 @@ To set up the environment needed to install this firmware, please refer to the A
 When the module receives a gate on input A, it tosses a (virtual) coin. Depending on the outcome
 of the coin toss the gate is set to output _OUT_ or _D_
 
-The probablity can be influeced by setting input IN1/Pot1: When IN1/Pot1 is set to the middle position, the chance of heads/tails is 50/50. The more the input is set to the left or to the right, the higher the probablity of either heads or tails as a result of the coin toss.
+The probablity can be influenced by setting input IN1/Pot1: When IN1/Pot1 is set to the middle position, the chance of heads/tails is 50/50. The more the input is set to the left or to the right, the higher the probablity of either heads or tails as a result of the coin toss.
+
+When Pot2 is turned to the right latch mode is enabled. In latch mode output _OUT_ or _D_ stay high until the other output gets activated.
 
 * __Demovideo__ for Grains 'Bernoulli Gate' is available here: https://www.youtube.com/watch?v=tPaAOLuh5cg
 
@@ -17,6 +19,7 @@ The probablity can be influeced by setting input IN1/Pot1: When IN1/Pot1 is set 
 __Inputs__
 
 * IN1 / Pot1: Set the probability of the outcome of the coin toss (heads/tails)
+* IN2 / Pot2: Switch between "normal" mode and "latch" mode. Turn Pot2 to the left for normal mode. Turn Pot2 right for latch mode.
 * A:          Gate input
 
 __Outputs__
@@ -50,6 +53,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 void setup()
 {
+  pinMode(A1, INPUT); // IN2 / Pot2
   pinMode(A2, INPUT); // IN1 / Pot1
   pinMode(A4, INPUT); // A
   pinMode(8, OUTPUT); // D
@@ -74,8 +78,8 @@ void loop()
 {
   // Check for gate on GRAINS input "A" (Arduino Pin A4)
   // "analogRead()" returns values between 0 and 1023
-  // If the value is bigger than 700, this is considered as "gate on"
-  gate = analogRead(A4) > 700; 
+  // If the value is bigger than 512, this is considered as "gate on"
+  gate = analogRead(A4) > 512; 
 
   // React only if the state of input "A" changed
   if (oldgate != gate) {
@@ -85,14 +89,19 @@ void loop()
       // -> The more P1 is turned to the right, the more "D" will be triggered
       if (random(1024) > analogRead(A2)) { 
         digitalWrite(8, HIGH); // send gate to "D"
+        digitalWrite(9, LOW); digitalWrite(11, LOW);
       } else {
         // Send gate to "OUT". Switch setting to "G" or "M" does not
         // matter because both outputs are set
         digitalWrite(9, HIGH); digitalWrite(11, HIGH);
+        digitalWrite(8, LOW);
       }
     } else {
-      // no gate on input "A" -> set all outputs to zero
-      digitalWrite(8, LOW); digitalWrite(9, LOW); digitalWrite(11, LOW);
+      // No gate on input "A" -> set all outputs to zero in "normal" mode.
+      // In "latch" mode (Pot2 turned to the right) outputs will stay high.
+      if (analogRead(A1) < 512) {
+        digitalWrite(8, LOW); digitalWrite(9, LOW); digitalWrite(11, LOW);
+      }
     }
     oldgate = gate;
   }
