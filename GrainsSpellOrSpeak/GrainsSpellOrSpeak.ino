@@ -54,7 +54,7 @@
 */
 
 #include <Arduino.h>
-#include "Talkie.h"
+#include "talkie.h"
 #include "Vocab_US_TI99.h"      // Texas Instruments phonems, similar to those used with the famous "Speak&Spell" and other devices
 
 Talkie voice;                   // Prepare speach - Use PIN 11 only, because this is connected as audio out with tangible waves GRAINS module
